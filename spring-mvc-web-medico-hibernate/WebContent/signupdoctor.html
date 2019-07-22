@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign UP</title>
+    <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/modern-business.css" rel="stylesheet">
+</head>
+<body>
+    <!--navbar-->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary fixed-top">
+            <div class="container">
+              <a class="navbar-brand" href="index.html">Medico</a>
+              <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                    <a class="nav-link" href="signup.html">Sign Up</a>
+                  </li> 
+                  <li class="nav-item">
+                    <a class="nav-link" href="login.html">Login</a>
+                  </li> 
+                </ul>
+              </div>
+            </div>
+          </nav>
+    <!--navbar-->
+
+    <div class="container">
+        <!--Sign UP foam-->
+        <section class="testimonial py-5" id="testimonial">
+                <div class="container">
+                    <div class="row ">
+                        <div class="col-md-4 py-5 bg-primary text-white text-center ">
+                            <div class=" ">
+                                <div class="card-body">
+                                    <img src="http://www.ansonika.com/mavia/img/registration_bg.svg" style="width:30%">
+                                    <h2 class="py-3">Sign Up Doctor</h2>
+                                    <p>Tation argumentum et usu, dicit viderer evertitur te has. Eu dictas concludaturque usu, facete detracto patrioque an per, lucilius pertinacia eu vel.
+           </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8 py-5 border">
+                            <h4 class="pb-4">Please fill with your details</h4>
+                            <form>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                      <input id="Full Name" name="Full Name" placeholder="Full Name" class="form-control" type="text">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                      <input type="email" pattern=".{8,}" title="8 or more character" class="form-control" id="inputEmail4" placeholder="Email">
+                                    </div>
+                                  </div>
+                                
+                                  <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                      <input id="Password" name="Password" placeholder="Password" pattern=".{8,}" title="8 or more character" class="form-control" type="password">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                      <input type="text" class="form-control" id="Contact" pattern=".{10}" title="plaease enter valid number" placeholder="Contact">
+                                    </div>
+                                  </div>
+
+                                
+                                  <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                      <select class="form-control">
+                                          <option selected>Gender</option>
+                                          <option value="Male">Male</option>
+                                          <option value="Female">FeMale</option>
+                                      </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <input id="CurrentPost" name="currentPost" placeholder="Current Post" class="form-control" type="text">
+                                    </div>
+                                  </div>
+
+                                  <div class="form-row">
+                                      <div class="form-group col-md-6">
+                                        <input id="Addhar" name="Addhar" placeholder="Addhar No" pattern=".{18}" title="plaease enter valid AdharNo and no space between number" class="form-control" type="number">
+                                      </div>
+                                      <div class="form-group col-md-6">
+                                        <input type="date" class="form-control" id="dateofbirth" placeholder="Dateofbirth">
+                                      </div>
+                                    </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <input id="Degree" name="Degree" placeholder="Degree" class="form-control" required="required" type="text">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <input id="Degree" name="Degree" placeholder="Degree" class="form-control" required="required" type="file">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <input id="License" name="License" placeholder="License" class="form-control" required="required" type="text">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <input id="License" name="License" placeholder="License" class="form-control" type="file">
+                                        </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                    <input id="YearsOfExp" name="YearsOfExp" placeholder="Year of Experince" class="form-control" type="text">
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                    <input id="ParcticeHours" name="ParcticeHours" placeholder="Parctice Hours" class="form-control" type="text">
+                                  </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                    <input id="Speclization" name="Speclization" placeholder="Speclization" class="form-control" type="text">
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                    <input id="Awards" name="Awards" placeholder="Awards" class="form-control" type="text">
+                                  </div>
+                                </div>
+                                <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                    <input id="Duration" name="Duration" placeholder="Duration" class="form-control" type="text">
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                      <input id="SpecialTraning" name="SpecialTraning" placeholder="SpecialTraning" class="form-control" required="required" type="text">
+                                  </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                          <label>Preferred language</label>
+                                          <div class="checkbox">
+                                            <label><input type="checkbox" value="English">English</label>
+                                          </div>
+                                          <div class="checkbox">
+                                            <label><input type="checkbox" value="Marathi">Marathi</label>
+                                          </div>
+                                          <div class="checkbox">
+                                            <label><input type="checkbox" value="Hindi">Hindi</label>
+                                          </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                              <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
+                                              <label class="form-check-label" for="invalidCheck2">
+                                                <small>By clicking Submit, you agree to our Terms & Conditions, Visitor Agreement and Privacy Policy.</small>
+                                              </label>
+                                            </div>
+                                          </div>
+                                
+                                      </div>
+                                </div>
+
+                              <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <button type="button" class="btn btn-danger">Sign Up</button>
+                                </div>
+                                <div class="form-group col-md-4">
+                                  
+                               </div>
+                                <div class="form-group col-md-4">
+                                  
+                                  <a href='login.html'><button class="btn btn-primary">Login</button></a>
+                               </div>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+    </div>
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+            <div class="container">
+              <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+            </div>
+    </footer>
+</body>
+</html>
