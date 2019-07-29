@@ -24,5 +24,6 @@ public interface MedicoDao {
 	public Doctor getDoctor1(String email);
 	public List<Patient> getAllPatient();
 	public Doctor approveDoctor(String email);
+	public Doctor deleteDoctor(String email);
 }
 

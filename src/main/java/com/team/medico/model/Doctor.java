@@ -153,7 +153,11 @@ public class Doctor {
 	public void setSpecialization(String specialization) {
 		this.specialization = specialization;
 	}
+	public String getStatus() {
+		return status;
+	}
 
+	
 	public String getSpecialTraining() {
 		return specialTraining;
 	}

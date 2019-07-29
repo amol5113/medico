@@ -104,6 +104,13 @@ public class AdminController {
 		return "admin";	
 	}
 	
+	@RequestMapping(value = "/delete_doctor")
+	public String deleteDoctor(ModelMap model, @RequestParam String email) throws IOException {
+		Doctor doctor = medService.delteDoctor(email);
+		welcomeAdmin(null, doctor, model);
+		return "admin";	
+	}
+	
 	// sign Up for patient
 	@RequestMapping(value = "/signUpAdmin")
 	public String signUpAdmin(ModelMap model) {

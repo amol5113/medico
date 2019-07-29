@@ -175,9 +175,6 @@ public class MedicoDaoImple implements MedicoDao {
 	}
 
 
-
-
-
 	@Override
 	public List<Patient> getAllPatient() {
 		Session session = this.sessionFactory.openSession();
@@ -198,6 +195,21 @@ public class MedicoDaoImple implements MedicoDao {
 		q.setParameter(0, email);
 		int count = q.executeUpdate();
 		
+		
+		session.close();
+		if(count > 0) {
+			
+			return null;
+		}
+		return null;
+	}
+
+	@Override
+	public Doctor deleteDoctor(String email) {
+		Session session = this.sessionFactory.openSession();
+		Query q = session.createQuery("update User u set u.isActive='inactive' where u.emailId=?");
+		q.setParameter(0, email);
+		int count = q.executeUpdate();
 		
 		session.close();
 		if(count > 0) {

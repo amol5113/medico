@@ -47,7 +47,7 @@ public class DoctorController {
 		@RequestMapping(value="/saveDoctor")
 		public String saveDoctor(@RequestParam(name = "prefLanguage")List<String> pl,UploadedFile uploadedFile, Doctor doctor,User user,ModelMap model) {
 			
-			 InputStream inputStreamL = null;    
+			  InputStream inputStreamL = null;    
 			  OutputStream outputStreamL = null;
 			  InputStream inputStreamD = null;    
 			  OutputStream outputStreamD = null;

@@ -15,6 +15,12 @@
 <head>
 
 <style>
+table tbody tr:nth-child(even) {
+  background-color: #eee;
+}
+table tbody tr:nth-child(odd) {
+ background-color: #fff;
+}
 .sidenav {
 	height: 100%;
 	width: 160px;
@@ -46,8 +52,8 @@
 }
 
 .main1 {
-	margin-left: 100px; /* Same as the width of the sidenav */
-	font-size: 28px; /* Increased text to enable scrolling */
+	margin-left: 60px; /* Same as the width of the sidenav */
+	font-size: 22px; /* Increased text to enable scrolling */
 }
 
 @media screen and (max-height: 450px) {
@@ -153,6 +159,7 @@
 
 
 		<div class="row mt-4">
+		<!--Adimn Dash Board  -->
 			<div class="sidenav" style="width: 20%;">
 				<h3 class="ml-4 mt-5 text-white">Admin Dashboard</h3>
 
@@ -189,46 +196,99 @@
 
 
 
-				<div id="di2" class="main1"
-					style="display: none; margin-left: 20%; margin-top: 7%;">
+				<div id="di2" class="main1"	style="display: none; margin-left: 20%; margin-top: 7%;">
+					<div class="text-danger "><h2>Pending Doctors</h2></div> 
 					<div class="container">
 						<div class="row">
 							<%
  								List<Doctor> doctorList = (List<Doctor>)request.getAttribute("doctorList"); 
 								//Object image=request.getAttribute("image");
-								if(doctorList!=null){ 
+								if(doctorList!=null){
+									
 							%>
-							<table>
-								<thead class="bg-success">
+							
+							<table class="table">
+								<thead class="bg-warning">
 									<tr>
 										<th scope="col">Sr no</th>
 										<th scope="col">Doctor Name</th>
 										<th scope="col">degree</th>
+										<th scope="col">View Doctor</th>
 									</tr>
 								</thead>
-
+								<tbody>
 								<%
 									int i=1;
+									int count=0;
 									for(Doctor doctor : doctorList){
+										if(doctor.getStatus().equals("Pending")==true){
+										//	out.print(doctor.getStatus());
+										
 								%>
 								<tr>
 									<td><%=i%></td>
 
 									<td><%=doctor.getUser().getUserName() %></td>
 									<td><%=doctor.getDegree() %></td>
-									<td><%=doctor.getDegreeImg() %></td>
-									<% String degree=doctor.getDegreeImg(); %>
-									<% String license=doctor.getLicenseImg(); %>
-									<%-- <img src="<%=degree%>" width="100" height="100">
-									<img src="<%=license%>" width="100" height="100"> --%>
-									
-									<%-- <img src="data:image/jpeg;base64,${image}" alt="..." width="200" height="200">
-									 --%>
 									 <td><a href="view_doctor?email=<%=doctor.getEmailId() %>" >view</a></td> 
 								</tr>
 								<%i=i+1;
-									}  %>
+								count=1;
+										}
+										
+										}
+										if(count!=0){
+											
+										}
+										else{ 
+							%><tr><td>No Doctor is Pending</td></tr>
+
+							<%}%>
+										</tbody>
 							</table>
+							<div class="text-success "><h2>Approved Doctors</h2></div> 
+							<table class="table">
+								<thead class="bg-info">
+									<tr>
+										<th scope="col">Sr no</th>
+										<th scope="col">Doctor Name</th>
+										<th scope="col">degree</th>
+										<th scope="col">View Doctor</th>
+										
+									</tr>
+								</thead>
+	
+								<%
+									int i1=1;
+									int count1=0;
+									for(Doctor doctor : doctorList){
+										if(doctor.getStatus().equals("Approved")==true){
+											//out.print(doctor.getStatus());
+											
+								%>
+								<tbody>
+								<tr>
+									<td><%=i1%></td>
+
+									<td><%=doctor.getUser().getUserName() %></td>
+									<td><%=doctor.getDegree() %></td>
+									 <td><a href="view_doctor?email=<%=doctor.getEmailId() %>" >view</a></td> 
+								</tr>
+								<%i1=i1+1;
+								count1=1;
+										}
+										}  
+										
+										if(count1!=0){
+											
+										}
+										else{ 
+							%><tr><td>No Doctor is Pending</td></tr>
+
+							<%}%>
+										</tbody>
+							</table>
+							
 							<%}
 							else{
 							%><h1>No Doctor to show</h1>
@@ -236,32 +296,7 @@
 							<%} %>
 
 
-							<table class="table">
-								<thead class="bg-danger">
-									<tr>
-										<th scope="col">Sr Number</th>
-										<th scope="col">Name</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<th scope="row">1</th>
-										<td>Mark</td>
-										<td>Otto</td>
-									</tr>
-									<tr>
-										<th scope="row">2</th>
-										<td>Jacob</td>
-										<td>Thornton</td>
-									</tr>
-									<tr>
-										<th scope="row">3</th>
-										<td>Larry</td>
-										<td>the Bird</td>
-
-									</tr>
-								</tbody>
-							</table>
+							
 						</div>
 					</div>
 				</div>
@@ -272,28 +307,36 @@
 
 				<%
  								List<Patient> patientList = (List<Patient>)request.getAttribute("patientList"); 
+				
 								if(patientList!=null){ 
 							%>
 							<table class="table">
-								<thead class="bg-danger">
+								<thead class="bg-info text-white">
 									<tr>
 										<th scope="col">Sr Number</th>
 										<th scope="col">Name</th>
+										<th scope="col">Blood Group</th>
+										<th scope="col">Delete User</th>
 									</tr>
 								</thead>
 								<%
 									int j=1;
 									for(Patient patient : patientList){
+										if(patient.getUser().getIsActive().equals("Active")==true){
 								%>
+								<tbody>
 								<tr>
 									<td><%=j%></td>
 									<td><%=patient.getUser().getUserName() %></td>
-									<td><%=patient.getRelationshipWithPatient() %></td>
+									<td><%=patient.getBloodGroup() %></td>
+									<td><a  href="delete_doctor?email=<%=patient.getEmailId() %>" ><button type="button" class="btn btn-danger">Delete</button></a></td>
 									<%-- <td><a href="delete_user.htm?userId=<%=u.getUserId() %>" >Delete</a></td>
 									<td><a href="select_user.htm?userId=<%=u.getUserId() %>" >Select</a></td> --%>
 								</tr>
 								<%j=j+1;
+										}
 									}  %>
+									</tbody>
 							</table>
 							<%}
 							else{

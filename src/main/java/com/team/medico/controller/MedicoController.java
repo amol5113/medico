@@ -8,11 +8,14 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.team.medico.dtosym.Symptoms;
 import com.team.medico.model.Doctor;
 import com.team.medico.model.History;
 import com.team.medico.model.Patient;
@@ -34,6 +37,24 @@ public class MedicoController {
 	public String home(ModelMap model) {
 		return "home";
 	}
+	
+
+	@RequestMapping(value = "/symptomSearch.htm")
+	public String symptomList(ModelMap model) {
+		//List<User> slist = userService.getAll();
+		model.addAttribute("symptom", new Symptoms());
+		return "symptom_search";
+	}
+
+	@RequestMapping(method = RequestMethod.GET)
+	public String home(Model model) {
+		
+		
+		model.addAttribute("serverTime", "yayy" );
+		
+		return "home";
+	}
+	
 	
 	//login page
 	@RequestMapping(value = "/login_form")
@@ -105,6 +126,13 @@ public class MedicoController {
 		return "";
 	}
 	
+	@RequestMapping(value="/appbook")
+	public String app_booking(ModelMap model) {
+		model.put("doctor",new Doctor());
+		model.put("user",new User());
+		return "appintment_booking";
+		
+	}
 }
 	
 	

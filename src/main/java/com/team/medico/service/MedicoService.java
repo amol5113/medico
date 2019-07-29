@@ -32,5 +32,7 @@ public interface MedicoService {
 	public Doctor selectDoctor1(String email);
 
 	public Doctor approveDoctor(String email);
+
+	public Doctor delteDoctor(String email);
 	
 }

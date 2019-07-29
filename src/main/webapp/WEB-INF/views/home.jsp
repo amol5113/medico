@@ -29,7 +29,9 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Sign Up</a>
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Sign Up</a><br>
+            
+            <a href="symptomSearch.htm">symptoms </a><br>
                     <div class="dropdown-menu">
                         <a href="signUpDoctor" class="dropdown-item">Doctor</a>
                         <a href="signUpPatient" class="dropdown-item">Patient</a>

@@ -79,4 +79,9 @@ public class MedicoServiceImple implements MedicoService {
 		return medDao.approveDoctor(email);
 	}
 
+	@Override
+	public Doctor delteDoctor(String email) {
+		return medDao.deleteDoctor(email);
+	}
+
 }
