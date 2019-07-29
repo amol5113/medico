@@ -1,0 +1,100 @@
+CREATE DATABASE `us`;
+use us;
+CREATE TABLE `user` (
+   `user_name` varchar(100) NOT NULL,
+   `email_id` varchar(100) NOT NULL,
+   `password` varchar(100) NOT NULL,
+   `gender` varchar(10) NOT NULL,
+   `contact_no` varchar(15) NOT NULL Unique,
+   `aadhar` bigint(25) NOT NULL Unique,
+   `dob` date NOT NULL,
+   `is_active` boolean,
+   `type_of_user` varchar(10) NOT NULL,
+   PRIMARY KEY (`email_id`)
+ );
+ 
+ CREATE TABLE `patient` (
+   `email_id` varchar(100),
+   `blood_group` varchar(10) NOT NULL,
+   `weight` int(15) NOT NULL,
+   `current_medication` varchar(300) NOT NULL,
+   `marital_status` varchar(10) NOT NULL,
+   `occupation` varchar(100) NOT NULL,
+   `diet` varchar(300) DEFAULT NULL,
+   `relationship_with_patient` varchar(10) DEFAULT NULL,
+   PRIMARY KEY (`email_id`),
+   CONSTRAINT `fk_patient_email_id` FOREIGN KEY (`email_id`) REFERENCES `user` (`email_id`)
+ ) ;
+ 
+ CREATE TABLE `doctor` (
+   `email_id` varchar(100),
+   `degree` varchar(200) NOT NULL,
+   `degree_img` varchar(100) NOT NULL,
+   `license` varchar(50) NOT NULL,
+   `license_img` varchar(100) NOT NULL,
+   `current_post` varchar(50) NOT NULL,
+   `years_of_experience` varchar(10) NOT NULL,
+   `practice_hours_start` time NOT NULL,
+   `practice_hours_end` time NOT NULL,
+   `awards` varchar(100) DEFAULT NULL,
+   `specialization` varchar(50) NOT NULL,
+   `status` varchar(200) DEFAULT NULL,
+   `rating` double DEFAULT NULL,
+   PRIMARY KEY (`email_id`),
+   CONSTRAINT `fk_doctor_email_id` FOREIGN KEY (`email_id`) REFERENCES `user` (`email_id`)
+ );
+ 
+ CREATE TABLE `admin` (
+   `email_id` varchar(100) NOT NULL,
+   `status` varchar(200) DEFAULT NULL,
+   PRIMARY KEY (`email_id`),
+   CONSTRAINT `fk_admin_email_id` FOREIGN KEY (`email_id`) REFERENCES `user` (`email_id`)
+ );
+ 
+ CREATE TABLE `history` (
+   `email_id` varchar(100) NOT NULL,
+   `disease_type` varchar(25) DEFAULT NULL,
+   `start_month` varchar(25) DEFAULT NULL,
+   `time_period_months` bigint(100) DEFAULT NULL,
+   `previous_doctor` varchar(50) DEFAULT NULL,
+   PRIMARY KEY (`email_id`),
+   CONSTRAINT `fk_patient_email_id_history` FOREIGN KEY (`email_id`) REFERENCES `patient` (`email_id`)
+ );
+ 
+ CREATE TABLE `preferred_language` (
+   `language_id` varchar(25) NOT NULL,
+   `pref_language` varchar(20) DEFAULT NULL,
+   PRIMARY KEY (`language_id`)
+ );
+ 
+ CREATE TABLE `preferred_language_user` (
+   `language_id` varchar(25) DEFAULT NULL,
+   `email_id` varchar(100) DEFAULT NULL,
+   KEY `fk_user_email_id` (`email_id`),
+   KEY `fk_preferred_language_language_id` (`language_id`),
+   CONSTRAINT `fk_preferred_language_language_id` FOREIGN KEY (`language_id`) REFERENCES `preferred_language` (`language_id`),
+   CONSTRAINT `fk_user_email_id` FOREIGN KEY (`email_id`) REFERENCES `user` (`email_id`)
+ );
+ insert into preferred_language values("1","English"),("2","Hindi"),("3","Marathi");
+
+CREATE TABLE `timeslot` (
+   `slot_id` bigint NOT NULL AUTO_INCREMENT,
+   `email_id` varchar(100) DEFAULT NULL,
+   `start_time` time NOT NULL,
+   `end_time` time NOT NULL,
+   `time_slot_date` date NOT NULL,
+   `time_slot_status` varchar(25) DEFAULT NULL,
+   PRIMARY KEY (`slot_id`),
+   KEY `fk_doctor_email_id_time` (`email_id`),
+   CONSTRAINT `fk_doctor_email_id_time` FOREIGN KEY (`email_id`) REFERENCES `doctor` (`email_id`)
+ );
+CREATE TABLE `appointment_booking` (
+   `slot_id` bigint NOT NULL,
+   `email_id` varchar(25) DEFAULT NULL,
+   `app_status` varchar(25) DEFAULT NULL,
+   `token` varchar(500) DEFAULT NULL,
+   PRIMARY KEY (`slot_id`),
+   KEY `fk_patient_email_id_appointment_booking` (`email_id`),
+   CONSTRAINT `fk_patient_email_id_appointment_booking` FOREIGN KEY (`email_id`) REFERENCES `patient` (`email_id`),
+   CONSTRAINT `fk_timeslot_slot_id_appointment_booking` FOREIGN KEY (`slot_id`) REFERENCES `timeslot` (`slot_id`)
+ );
